@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build
-        run: go build -v ./..
+        run: go build
 
   lint:
     runs-on: ubuntu-latest
