@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/danielgtaylor/huma/v2"
@@ -13,7 +14,7 @@ import (
 // GreetingOutput represents the greeting operation response.
 type GreetingOutput struct {
 	Body struct {
-		Message string `json:"message" :example:"Hello, world!" doc:"Greeting message"`
+		Message string `json:"message" example:"Hello, world!" doc:"Greeting message"`
 	}
 }
 
@@ -33,5 +34,7 @@ func main() {
 		return resp, nil
 	})
 
-	http.ListenAndServe("127.0.0.1:8888", router)
+	if err := http.ListenAndServe("127.0.0.1:8888", router); err != nil {
+		log.Fatalf("Failed to start server: %v", err)
+	}
 }
