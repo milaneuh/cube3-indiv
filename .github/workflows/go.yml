@@ -2,12 +2,7 @@
 name: golang-pipeline
 on: push
 jobs:
-  dependencies:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install Dependencies
-        run: go mod tidy
-        working-directory: . 
+
   build:
     runs-on: ubuntu-latest
     needs: dependencies
